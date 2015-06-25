@@ -19,9 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(methodOverride());
 
-// listen (start app with node server.js)
-app.listen(8080);
-console.log("App listening on port 8080");
 
 
 // http://mongoosejs.com/docs/guide.html
@@ -93,3 +90,28 @@ app.delete('/api/organizations/:organization_id', function(req,res){
 	})
 });
 
+
+
+
+app.get('*', function(req,res){
+	res.sendfile('./public/index.html');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// listen (start app with node server.js)
+app.listen(8080);
+console.log("App listening on port 8080");

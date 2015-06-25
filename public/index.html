@@ -1,0 +1,47 @@
+<html ng-app="givingPortfolio">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My Giving Portfolio</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<style>
+		html 				{ overflow-y:scroll; }
+		body 				{ padding-top:50px; }
+		#organizations-list	{ margin-bottom:30px; }
+    </style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script><!-- load jquery -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script><!-- load angular -->
+	<script src="core.js"></script>
+</head>
+<body ng-controller="mainController">
+	<div class="container">
+		<div class="jumbotron text-center">
+			<h1>Organizations <span class="label label-info">{{ organizations.length }}</span></h1>
+		</div>
+		<div id="organizations-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="checkbox" ng-repeat="org in organizations">
+					<span class="delete btn" ng-click="deleteOrganization(org._id)">x</span>
+					<span class="decrease large btn" ng-click="org.portion-=5">--</span>
+					<span class="decrease small btn" ng-click="org.portion-=1">-</span>
+					<span class="name">{{ org.name }}</span>
+					<input class="portion" type="number" ng-model="org.portion"></span>
+					<span class="increase small btn" ng-click="org.portion+=1">-</span>
+					<span class="increase large btn" ng-click="org.portion+=5">--</span>
+				</div>
+			</div>
+		</div>
+		<div id="organization-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                        <input type="text" class="form-control input-lg text-center" placeholder="Organization Name" ng-model="formData.name">
+                        <input type="number" class="form-control input-lg text-center" placeholder="" ng-model="formData.number">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createOrganization()">Add</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
