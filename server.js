@@ -48,7 +48,8 @@ app.get('/api/organizations', function(req,res){
 app.post('/api/organizations', function(req,res){
 	Organization.create({
 		name : req.body.name,
-		number : req.body.portion
+		portion : req.body.portion, // must match with schema
+		grade : req.body.grade
 	}, function(err,organizations){ // why plural?
 		if(err)
 			res.send(err);
@@ -60,6 +61,20 @@ app.post('/api/organizations', function(req,res){
 			res.json(organizations);
 		})
 	}) 
+});
+
+app.delete('/api/organizations', function(req,res){
+	Organization.remove({}, function(err, organizations){
+		if(err)
+			res.send(err);
+
+		Organization.find(function(err,organizations){
+			if(err)
+				res.send(err);
+
+			res.json(organizations);
+		})
+	})
 });
 
 app.delete('/api/organizations/:organization_id', function(req,res){
@@ -77,3 +92,4 @@ app.delete('/api/organizations/:organization_id', function(req,res){
 		})
 	})
 });
+
