@@ -4,16 +4,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>My Giving Portfolio</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
-	<style>
-		html 				{ overflow-y:scroll; }
-		body 				{ padding-top:50px; }
-		#organizations-list	{ margin-bottom:30px; }
-		.organization .name, .organization .portion { width: 200px; display: inline-block; font-weight: bold; font-size:1.5em;}
-		.organization .btn.delete { margin-right:20px; }
-    </style>
+
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script><!-- load jquery -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script><!-- load angular -->
+	
 	<script src="core.js"></script>
+
+	<link rel="stylesheet" href="style.css">
 </head>
 <body ng-controller="mainController">
 	<div class="container">
@@ -22,27 +19,26 @@
 		</div>
 		<div id="organizations-list" class="row">
 			<div class="col-sm-4-NOT col-sm-offset-4-NOT text-center">
-				<div class="organization" ng-repeat="org in organizations">
-					<button type="button" class="delete btn btn-default" ng-click="deleteOrganization(org._id)">
+				<div class="org row" ng-repeat="org in organizations">
+					<button type="button" class="delete btn btn-danger" ng-click="deleteOrganization(org._id)">
 						<span class="glyphicon glyphicon-remove"></span>
 					</button>
-					<button type="button" class="decrease large btn btn-default" ng-click="org.portion = org.portion - 5;">
-						<span class="glyphicon glyphicon-minus"></span>
-						<span class="glyphicon glyphicon-minus"></span>
-					</button>
-					<button type="button" class="decrease small btn btn-default" ng-click="org.portion = org.portion - 1;">
-						<span class="glyphicon glyphicon-minus"></span>
-					</button>
 					<input type="text" class="name" ng-model="org.name"></input>
+					<button type="button" class="decrease large btn btn-warning" ng-click="org.portion = org.portion - 5;">
+						<span class="glyphicon glyphicon-minus"></span>
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+					<button type="button" class="decrease small btn btn-warning" ng-click="org.portion = org.portion - 1;">
+						&nbsp;<span class="glyphicon glyphicon-minus"></span>&nbsp;
+					</button>
 					<input class="portion" type="number" ng-model="org.portion"></button>
-					<button type="button" class="increase small btn btn-default" ng-click="org.portion = org.portion + 1;">
+					<button type="button" class="increase small btn btn-success" ng-click="org.portion = org.portion + 1;">
+						&nbsp;<span class="glyphicon glyphicon-plus"></span>&nbsp;
+					</button>
+					<button type="button" class="increase large btn btn-success" ng-click="incrementOrgPortion(org,5)">
+						<span class="glyphicon glyphicon-plus"></span>
 						<span class="glyphicon glyphicon-plus"></span>
 					</button>
-					<button type="button" class="increase large btn btn-default" ng-click="org.portion = org.portion + 5;">
-						<span class="glyphicon glyphicon-plus"></span>
-						<span class="glyphicon glyphicon-plus"></span>
-					</button>
-					&rArr;
 				</div>
 			</div>
 		</div>

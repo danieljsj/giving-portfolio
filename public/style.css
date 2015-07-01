@@ -1,0 +1,46 @@
+/* General */
+html { 
+	overflow-y:scroll; 
+}
+body { 
+	padding-top:50px; 
+}
+* {
+	vertical-align: middle; 
+}
+
+
+/* Pretty Buttons */
+.org { 
+	margin-bottom: 10px;
+}
+.org .name, 
+.org .portion { 
+	width: 200px; 
+	display: inline-block;
+	font-weight: bold;
+	font-size:1.5em;
+}
+.org .btn.delete { 
+	margin-right:30px;
+}
+.org .name { 
+	margin-right:10px;
+}
+.org .portion { 
+	width: 50px;
+	text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none;   <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+
+.org .btn.increase.small {background-color}
+
+
+

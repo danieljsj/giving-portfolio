@@ -29,85 +29,73 @@ var organizationSchema = mongoose.Schema({
 
 var Organization = mongoose.model('Organization', organizationSchema);
 
+function orgAttsFromReq(req){
+	return {
+		name : req.body.name,
+		portion : req.body.portion,
+		grade : req.body.grade
+	};
+}
+// Commonly re-used functions... maybe should go in a module or something. i'm sure this is wrong, but I got tired of copy-pasta, so we'll call this a good step.
 
 
-// Routes =============================
 
-app.get('/api/organizations', function(req,res){
-	Organization.find(function(err, organizations){
+
+function resWithErrOrOrgs(res,err) {
+	if(err)
+		res.send(err);
+
+	Organization.find(function(err,organizations){
 		if(err)
 			res.send(err);
 
 		res.json(organizations);
 	})
+}
+
+
+
+
+
+// Routes =============================
+app.put('/api/organizations/:organization_id', function(req,res){
+	// http://mongoosejs.com/docs/2.7.x/docs/updating-documents.html ... but permutated to fit current code layout
+	Model.update({ 
+		_id : req.params.organization_id 
+	}, orgAttsFromReq(req), function(err, numAffected){
+		resWithErrOrOrgs(res,err);
+	})
+});
+
+app.get('/api/organizations', function(req,res){
+	var err = false;
+	resWithErrOrOrgs(res,err);
 });
 
 app.post('/api/organizations', function(req,res){
-	Organization.create({
-		name : req.body.name,
-		portion : req.body.portion, // must match with schema
-		grade : req.body.grade
-	}, function(err,organizations){ // why plural?
-		if(err)
-			res.send(err);
-
-		Organization.find(function(err,organizations){
-			if(err)
-				res.send(err);
-
-			res.json(organizations);
-		})
+	Organization.create( orgAttsFromReq(req), function(err){
+		resWithErrOrOrgs(res,err);
 	}) 
 });
 
+
 app.delete('/api/organizations', function(req,res){
-	Organization.remove({}, function(err, organizations){
-		if(err)
-			res.send(err);
-
-		Organization.find(function(err,organizations){
-			if(err)
-				res.send(err);
-
-			res.json(organizations);
-		})
+	Organization.remove({}, function(err){
+		resWithErrOrOrgs(res,err);
 	})
 });
 
 app.delete('/api/organizations/:organization_id', function(req,res){
 	Organization.remove({
 		_id : req.params.organization_id
-	}, function(err, organizations){
-		if(err)
-			res.send(err);
-
-		Organization.find(function(err,organizations){
-			if(err)
-				res.send(err);
-
-			res.json(organizations);
-		})
+	}, function(err){
+		resWithErrOrOrgs(res,err);
 	})
 });
-
-
-
 
 app.get('*', function(req,res){
 	res.sendfile('./public/index.html');
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
