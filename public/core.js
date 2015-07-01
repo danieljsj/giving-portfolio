@@ -2,7 +2,6 @@ var givingPortfolio = angular.module('givingPortfolio', []);
 
 function mainController($scope, $http){
 
-
 	$scope.formData = {};
 
 	$http.get('/api/organizations')
