@@ -45,7 +45,7 @@ function resWithErrOrOrgs(res,err) {
 	if(err)
 		res.send(err);
 
-	Organization.find(function(err,organizations){
+	Organization.find({}).sort('-portion').exec(function(err,organizations){
 		if(err)
 			res.send(err);
 
@@ -56,11 +56,10 @@ function resWithErrOrOrgs(res,err) {
 
 
 
-
 // Routes =============================
 app.put('/api/organizations/:organization_id', function(req,res){
 	// http://mongoosejs.com/docs/2.7.x/docs/updating-documents.html ... but permutated to fit current code layout
-	Model.update({ 
+	Organization.update({ 
 		_id : req.params.organization_id 
 	}, orgAttsFromReq(req), function(err, numAffected){
 		resWithErrOrOrgs(res,err);
