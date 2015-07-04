@@ -45,7 +45,7 @@ function resWithErrOrOrgs(res,err) {
 	if(err)
 		res.send(err);
 
-	Organization.find({}).sort('-portion').exec(function(err,organizations){
+	Organization.find({})/*.sort('-portion')*/.exec(function(err,organizations){
 		if(err)
 			res.send(err);
 
