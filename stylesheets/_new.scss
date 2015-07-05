@@ -1,0 +1,28 @@
+/*  http://ely-s.github.io/mixin/  this is cool, but isnt needed if all I want to do is extend */
+
+
+/*  https://coderwall.com/p/wixovg/bootstrap-without-all-the-debt  -> use @extend! yes... */
+
+button {
+	@extend .btn;
+}
+
+button.increase {
+	@extend .btn-success;
+	span {
+		@extend .glyphicon;
+		@extend .glyphicon-plus;
+	}
+}
+
+button.decrease {
+	@extend .btn-warning;
+	span {
+		@extend .glyphicon;
+		@extend .glyphicon-minus;
+	}
+}
+
+button.delete {
+	@extend .btn-danger;
+}

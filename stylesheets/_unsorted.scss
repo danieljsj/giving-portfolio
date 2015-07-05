@@ -10,6 +10,12 @@ body {
 }
 
 
+#org-list,
+#org-list .org {
+	@extend .text-center;
+	@extend .row;
+}
+
 /* Pretty Buttons */
 .org { 
 	margin-bottom: 10px;

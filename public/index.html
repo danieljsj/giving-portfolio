@@ -17,29 +17,27 @@
 		<div class="jumbotron text-center">
 			<h1>My Giving Portfolio<!--  <span class="label label-info">{{ organizations.length }}</span> --></h1>
 		</div>
-		<div id="organizations-list" class="row">
-			<div class="col-sm-4-NOT col-sm-offset-4-NOT text-center">
-				<div class="org row" ng-repeat="org in organizations">
-					<button type="button" class="delete btn btn-danger" ng-click="deleteOrganization(org._id)">
-						<span class="glyphicon glyphicon-remove"></span>
-					</button>
-					<input type="text" class="name" ng-model="org.name"></input>
-					<button type="button" class="decrease large btn btn-warning" ng-click="incrementOrgPortion(org,-5);">
-						<span class="glyphicon glyphicon-minus"></span>
-						<span class="glyphicon glyphicon-minus"></span>
-					</button>
-					<button type="button" class="decrease small btn btn-warning" ng-click="incrementOrgPortion(org,-1);">
-						&nbsp;<span class="glyphicon glyphicon-minus"></span>&nbsp;
-					</button>
-					<input class="portion" type="number" ng-model="org.portion"></button>
-					<button type="button" class="increase small btn btn-success" ng-click="incrementOrgPortion(org,1);">
-						&nbsp;<span class="glyphicon glyphicon-plus"></span>&nbsp;
-					</button>
-					<button type="button" class="increase large btn btn-success" ng-click="incrementOrgPortion(org,5)">
-						<span class="glyphicon glyphicon-plus"></span>
-						<span class="glyphicon glyphicon-plus"></span>
-					</button>
-				</div>
+		<div id="org-list">
+			<div class="org" ng-repeat="org in organizations">
+				<button class="delete" ng-click="deleteOrganization(org._id)">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+				<input class="name" ng-model="org.name"></input>
+				<button class="decrease" ng-click="incrementOrgPortion(org,-5);">
+					<span></span>
+					<span></span>
+				</button>
+				<button class="decrease" ng-click="incrementOrgPortion(org,-1);">
+					&nbsp;<span></span>&nbsp;
+				</button>
+				<input class="portion" type="number" ng-model="org.portion"></button>
+				<button class="increase" ng-click="incrementOrgPortion(org,1);">
+					&nbsp;<span></span>&nbsp;
+				</button>
+				<button class="increase" ng-click="incrementOrgPortion(org,5)">
+					<span></span>
+					<span></span>
+				</button>
 			</div>
 		</div>
 		<div id="organization-form" class="row">
