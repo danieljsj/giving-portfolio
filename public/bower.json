@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "bootstrap-sass": "~3.3.5",
-    "highcharts-release": "~4.1.7"
+    "highcharts-release": "~4.1.7",
+    "highcharts-ng": "~0.0.8"
   }
 }

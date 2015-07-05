@@ -1,4 +1,4 @@
-var givingPortfolio = angular.module('givingPortfolio', []);
+var givingPortfolio = angular.module('givingPortfolio', ['highcharts-ng']);
 
 // https://gist.github.com/eliotsykes/5394631 .... trying to get OnBlur... as a trigger for saving...
 // givingPortfolio.directive('ngFocus', ['$parse', function($parse) {
@@ -83,6 +83,68 @@ function mainController($scope, $http){
 			});
 
 	}
+
+
+
+
+
+
+	$scope.chartConfig = {
+	  options: {
+	    chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+	    },
+	    plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+	    },
+		tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        }
+	  },
+	  series: [
+	    {
+	    	name: "Giving",
+	      data: [
+			{ _id:123456, name:"WorldVision", y:13 },
+			{ _id:123456, name:"WorldVision", y:14 },
+			{ _id:123456, name:"WorldVision", y:13 },
+			{ _id:123456, name:"WorldVision", y:12 },
+			{ _id:123456, name:"WorldVision", y:20 },
+			{ _id:123456, name:"WorldVision", y:19 },
+			{ _id:123456, name:"WorldVision", y:15 },
+			{ _id:123456, name:"WorldVision", y:09 },
+			{ _id:123456, name:"WorldVision", y:20 },
+			{ _id:123456, name:"WorldVision", y:20 }
+	      ],
+	      id: "series-5"
+	    }
+	  ],
+	  title: {
+	    text: "My Giving Portfolio"
+	  },
+	  credits: {
+	    enabled: false
+	  },
+	  loading: false,
+	  size: {},
+	  subtitle: {
+	    text: "Giving is Investing - Diversify Your Porfolio!"
+	  }
+	}
+	
 
 
 }
