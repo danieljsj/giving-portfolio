@@ -1,4 +1,8 @@
 /* @import some stuff */
-@import '../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+/* vendor */
+@import '../public/bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+/* src */
 @import '_unsorted.scss';
 @import '_new.scss';
