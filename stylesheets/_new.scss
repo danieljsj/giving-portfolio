@@ -27,3 +27,11 @@ button.delete {
 		@extend .btn, .btn-primary, .btn-lg, .glyphicon;
 	}
 }
+
+
+#pieChart {
+	min-width: 310px;
+	max-width: 600px;
+	height: 400px;
+	margin: 0 auto
+}

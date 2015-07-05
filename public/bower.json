@@ -1,0 +1,21 @@
+{
+  "name": "giving-portfolio",
+  "version": "0.0.0",
+  "homepage": "https://github.com/danieljsj/giving-portfolio",
+  "authors": [
+    "Daniel Schulz-Jackson <daniel@10x.agency>"
+  ],
+  "main": "js/core.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "highcharts-release": "~4.1.7"
+  }
+}
