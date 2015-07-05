@@ -15,7 +15,8 @@
 
 	<!--... I think this jQuery might also be redundant with Bootstrap...-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+	<!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>-->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.js"></script>
 	
 	<script src="core.js"></script>
 
@@ -31,7 +32,7 @@
 				<button class="delete" ng-click="deleteOrganization(org._id)">
 					<span class="glyphicon glyphicon-remove"></span>
 				</button>
-				<input class="name" ng-model="org.name"></input>
+				<input type="text" class="name" ng-model="org.name" ng-change="saveOrg(org)" ng-blur="alert('blur'); // FAILING"></input>
 				<button class="decrease" ng-click="incrementOrgPortion(org,-5);">
 					<span></span>
 					<span></span>
