@@ -3,10 +3,19 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>My Giving Portfolio</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<!-- 
+	Still need the bootstrap redundancy because:
+		Failed to decode downloaded font: http://localhost:8080/fonts/bootstrap/glyphicons-halflings-regular.woff2
+		localhost/:1 Failed to decode downloaded font: http://localhost:8080/fonts/bootstrap/glyphicons-halflings-regular.woff 
+	-->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<!-- iconj.com favicon code -->
+	<link rel="shortcut icon" href="http://www.iconj.com/icon.php?pid=kdqwbirc54" type="image/x-icon" /> 
+	<!-- end of iconj.com favicon code -->
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script><!-- load jquery -->
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script><!-- load angular -->
+	<!--... I think this jQuery might also be redundant with Bootstrap...-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
 	
 	<script src="core.js"></script>
 
@@ -15,7 +24,7 @@
 <body ng-controller="mainController">
 	<div class="container">
 		<div class="jumbotron text-center">
-			<h1>My Giving Portfolio<!--  <span class="label label-info">{{ organizations.length }}</span> --></h1>
+			<h1>My Giving Portfolio</h1>
 		</div>
 		<div id="org-list">
 			<div class="org" ng-repeat="org in organizations">
@@ -40,17 +49,10 @@
 				</button>
 			</div>
 		</div>
-		<div id="organization-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
-					<div class="form-group">
-                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <!-- <input type="text" class="form-control input-sm text-center" placeholder="Organization Name" ng-model="formData.name"> -->
-                        <!-- <input type="number" class="form-control input-sm text-center" placeholder="portions/parts to give" ng-model="formData.number"> -->
-                    </div>
-                    <input type="submit" class="btn btn-primary btn-lg" ng-click="createOrganization()" value="+"></input>
-				</form>
-			</div>
+		<div id="org-form">
+			<form>
+                <input type="submit" class="" ng-click="createOrganization()" value="+"></input>
+			</form>
 		</div>
 	</div>
 </body>

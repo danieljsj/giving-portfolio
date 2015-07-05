@@ -6,23 +6,24 @@
 button {
 	@extend .btn;
 }
-
 button.increase {
 	@extend .btn-success;
 	span {
-		@extend .glyphicon;
-		@extend .glyphicon-plus;
+		@extend .glyphicon, .glyphicon-plus;
 	}
 }
-
 button.decrease {
 	@extend .btn-warning;
 	span {
-		@extend .glyphicon;
-		@extend .glyphicon-minus;
+		@extend .glyphicon, .glyphicon-minus;
 	}
 }
-
 button.delete {
 	@extend .btn-danger;
+}
+#org-form {
+	@extend .row, .text-center;
+	input[type="submit"] {
+		@extend .btn, .btn-primary, .btn-lg, .glyphicon;
+	}
 }
